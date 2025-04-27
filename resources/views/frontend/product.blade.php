@@ -1,7 +1,7 @@
 <!-- Products Section -->
 <section class="products-section">
     <div class="container">
-        <h2 class="section-title">محصولات پرفروش</h2>
+        <h2 id="product-love" class="section-title">محصولات پرفروش</h2>
         <div class="row">
             <!-- Product 1 -->
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">

@@ -8,9 +8,19 @@ Route::get('/', function () {
 
 
 Route::get('/login', function () {
-    return view('frontend.login');
+    return view('auth.login');
 });
 
 Route::get('/register', function () {
-    return view('frontend.register');
+    return view('auth.register');
 });
+
+Route::get('/about', function () {
+    return view('frontend.about');
+});
+
+Route::get('/contact', function () {
+    return view('frontend.contact');
+});
+
+

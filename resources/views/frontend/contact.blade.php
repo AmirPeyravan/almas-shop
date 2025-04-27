@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ورود به فروشگاه آنلاین الماس</title>
+    <title>تماس با ما - فروشگاه آنلاین الماس</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap');
-        
+
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -20,7 +20,7 @@
             --accent: #f43f5e;
             --text-muted: #94a3b8;
         }
-        
+
         body {
             font-family: 'Vazirmatn', sans-serif;
             background-color: var(--darker);
@@ -34,7 +34,7 @@
             position: relative;
             overflow-x: hidden;
         }
-        
+
         body::before {
             content: '';
             position: absolute;
@@ -45,14 +45,14 @@
             background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234f46e5' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
             z-index: -1;
         }
-        
-        .login-container {
-            max-width: 450px;
+
+        .contact-container {
+            max-width: 550px;
             width: 100%;
             padding: 0;
         }
-        
-        .login-card {
+
+        .contact-card {
             background-color: var(--card-bg);
             border-radius: 15px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
@@ -60,15 +60,15 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
-        .login-header {
+
+        .contact-header {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
             padding: 30px 20px;
             text-align: center;
             position: relative;
         }
-        
-        .login-header::after {
+
+        .contact-header::after {
             content: '';
             position: absolute;
             bottom: -20px;
@@ -78,46 +78,46 @@
             background: var(--card-bg);
             border-radius: 50% 50% 0 0 / 100% 100% 0 0;
         }
-        
-        .login-logo {
+
+        .contact-logo {
             font-weight: 700;
             font-size: 2.2rem;
             color: white;
             margin-bottom: 5px;
             display: inline-block;
         }
-        
-        .login-logo i {
+
+        .contact-logo i {
             color: white;
             margin-left: 5px;
         }
-        
-        .login-subtitle {
+
+        .contact-subtitle {
             color: rgba(255, 255, 255, 0.8);
             font-size: 1.1rem;
         }
-        
-        .login-body {
+
+        .contact-body {
             padding: 30px 25px;
         }
-        
-        .login-title {
+
+        .contact-title {
             font-weight: 700;
             font-size: 1.5rem;
             margin-bottom: 25px;
             text-align: center;
             color: white;
         }
-        
+
         .form-floating {
             margin-bottom: 20px;
         }
-        
+
         .form-floating > label {
             font-family: 'Vazirmatn', sans-serif;
             padding-right: 15px;
         }
-        
+
         .form-control {
             background-color: rgba(255, 255, 255, 0.07);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -127,43 +127,21 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-        
+
         .form-control:focus {
             background-color: rgba(255, 255, 255, 0.1);
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
             color: white;
         }
-        
-        .form-check-input {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
+
+        textarea.form-control {
+            height: auto;
+            min-height: 120px;
+            resize: vertical;
         }
-        
-        .form-check-input:checked {
-            background-color: var(--primary);
-            border-color: var(--primary);
-        }
-        
-        .form-floating > .form-control:focus ~ label,
-        .form-floating > .form-control:not(:placeholder-shown) ~ label {
-            color: var(--text-muted);
-            transform: scale(0.85) translateY(-0.5rem) translateX(-0.15rem);
-        }
-        
-        .forgot-password {
-            color: var(--primary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        
-        .forgot-password:hover {
-            color: var(--light);
-            text-decoration: underline;
-        }
-        
-        .btn-login {
+
+        .btn-submit {
             background: var(--primary);
             color: white;
             border: none;
@@ -175,17 +153,17 @@
             transition: all 0.3s ease;
             margin-top: 10px;
         }
-        
-        .btn-login:hover {
+
+        .btn-submit:hover {
             background: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
         }
-        
-        .btn-login i {
+
+        .btn-submit i {
             margin-right: 8px;
         }
-        
+
         .divider {
             display: flex;
             align-items: center;
@@ -193,126 +171,159 @@
             margin: 25px 0;
             color: var(--text-muted);
         }
-        
+
         .divider::before,
         .divider::after {
             content: '';
             flex: 1;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .divider::before {
             margin-left: 15px;
         }
-        
+
         .divider::after {
             margin-right: 15px;
         }
-        
-        .social-login {
+
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            margin-left: 15px;
+            font-size: 1.3rem;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-text h5 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .contact-text p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-top: 25px;
         }
-        
+
         .social-btn {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.05);
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .social-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        
-        .social-btn.google:hover {
-            background: #EA4335;
+
+        .social-btn.instagram:hover {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
-        
-        .social-btn.facebook:hover {
-            background: #3b5998;
+
+        .social-btn.telegram:hover {
+            background: #0088cc;
         }
-        
-        .social-btn.twitter:hover {
-            background: #1DA1F2;
+
+        .social-btn.whatsapp:hover {
+            background: #25D366;
         }
-        
-        .register-link {
+
+        .social-btn.linkedin:hover {
+            background: #0A66C2;
+        }
+
+        .home-link {
             text-align: center;
             margin-top: 25px;
             color: var(--text-muted);
         }
-        
-        .register-link a {
+
+        .home-link a {
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
-        .register-link a:hover {
+
+        .home-link a:hover {
             color: var(--light);
             text-decoration: underline;
         }
-        
-        .password-toggle {
-            position: absolute;
-            top: 50%;
-            left: 15px;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            cursor: pointer;
-            z-index: 10;
-            padding: 5px;
-        }
-        
-        .password-toggle:hover {
-            color: var(--primary);
-        }
-        
-        .form-floating-password {
-            position: relative;
-        }
-        
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
-        .login-container {
+
+        .contact-container {
             animation: fadeIn 0.6s ease forwards;
         }
-        
+
         /* Responsive */
         @media (max-width: 576px) {
-            .login-container {
+            .contact-container {
                 padding: 0 15px;
             }
-            
-            .login-header {
+
+            .contact-header {
                 padding: 25px 15px;
             }
-            
-            .login-body {
+
+            .contact-body {
                 padding: 25px 15px;
             }
-            
-            .login-logo {
+
+            .contact-logo {
                 font-size: 1.8rem;
             }
         }
-        
+
         /* RTL Specific Styles */
         .form-floating > label {
             right: 0;
@@ -321,99 +332,129 @@
             padding-left: 0;
             transform-origin: 100% 0;
         }
-        
+
         .form-floating > .form-control {
             padding-right: 15px;
-        }
-        
-        .form-check {
-            padding-right: 1.5em;
-            padding-left: 0;
-        }
-        
-        .form-check .form-check-input {
-            float: right;
-            margin-right: -1.5em;
-            margin-left: 0;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-card">
-            <div class="login-header">
-                <div class="login-logo">
-                    <i class="bi bi-gem"></i>الماس
-                </div>
-                <div class="login-subtitle">فروشگاه آنلاین محصولات الکترونیکی</div>
+<div class="contact-container">
+    <div class="contact-card">
+        <div class="contact-header">
+            <div class="contact-logo">
+                <i class="bi bi-gem"></i>الماس
             </div>
-            <div class="login-body">
-                <h3 class="login-title">ورود به حساب کاربری</h3>
-                
-                <form action="#" method="post">
-                    <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="نام کاربری" required>
-                        <label for="username">نام کاربری</label>
-                    </div>
-                    
-                    <div class="form-floating form-floating-password mb-4">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="رمز عبور" required>
-                        <label for="password">رمز عبور</label>
-                        <span class="password-toggle" id="togglePassword">
-                            <i class="bi bi-eye"></i>
-                        </span>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="remember" name="remember">
-                            <label class="form-check-label" for="remember">
-                                مرا به خاطر بسپار
-                            </label>
-                        </div>
-                        <a href="#" class="forgot-password">فراموشی رمز عبور؟</a>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-login">
-                        <i class="bi bi-box-arrow-in-left"></i>
-                        ورود به حساب
-                    </button>
-                </form>
-                
-                <div class="divider">یا ورود با</div>
-                
-                <div class="social-login">
-                    <a href="#" class="social-btn google">
-                        <i class="bi bi-google"></i>
-                    </a>
-                    <a href="#" class="social-btn facebook">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <a href="#" class="social-btn twitter">
-                        <i class="bi bi-twitter-x"></i>
-                    </a>
+            <div class="contact-subtitle">فروشگاه آنلاین محصولات الکترونیکی</div>
+        </div>
+        <div class="contact-body">
+            <h3 class="contact-title">تماس با ما</h3>
+
+            <form action="#" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="نام و نام خانوادگی" required>
+                    <label for="fullName">نام و نام خانوادگی</label>
                 </div>
-                
-                <div class="register-link">
-                    حساب کاربری ندارید؟ <a href="#">ثبت نام کنید</a>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="ایمیل" required>
+                    <label for="email">ایمیل</label>
                 </div>
+
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="شماره تماس">
+                    <label for="phone">شماره تماس</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select class="form-control" id="subject" name="subject" required>
+                        <option value="" selected disabled>انتخاب کنید</option>
+                        <option value="support">پشتیبانی محصول</option>
+                        <option value="order">پیگیری سفارش</option>
+                        <option value="feedback">انتقادات و پیشنهادات</option>
+                        <option value="cooperation">همکاری با ما</option>
+                        <option value="other">سایر موارد</option>
+                    </select>
+                    <label for="subject">موضوع</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <textarea class="form-control" id="message" name="message" placeholder="پیام شما" required></textarea>
+                    <label for="message">پیام شما</label>
+                </div>
+
+                <button type="submit" class="btn btn-submit">
+                    <i class="bi bi-send"></i>
+                    ارسال پیام
+                </button>
+            </form>
+
+            <div class="divider">اطلاعات تماس</div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h5>آدرس</h5>
+                        <p>تهران، خیابان ولیعصر، خیابان بهشتی، پلاک ۱۲۶، مجتمع تجاری الماس</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="bi bi-telephone"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h5>تلفن تماس</h5>
+                        <p>۰۲۱-۸۸۳۳۶۶۵۵</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="bi bi-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h5>ایمیل</h5>
+                        <p>info@almas-shop.ir</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="bi bi-clock"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h5>ساعات کاری</h5>
+                        <p>شنبه تا چهارشنبه: ۹ صبح تا ۶ عصر | پنجشنبه: ۹ صبح تا ۱ بعدازظهر</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider">ما را در شبکه‌های اجتماعی دنبال کنید</div>
+
+            <div class="social-links">
+                <a href="#" class="social-btn instagram">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="social-btn telegram">
+                    <i class="bi bi-telegram"></i>
+                </a>
+                <a href="#" class="social-btn whatsapp">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+                <a href="#" class="social-btn linkedin">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+            </div>
+
+            <div class="home-link">
+                <a href="#">بازگشت به صفحه اصلی</a>
             </div>
         </div>
     </div>
-    
-    <script>
-        // Toggle Password Visibility
-        const togglePassword = document.getElementById('togglePassword');
-        const passwordInput = document.getElementById('password');
-        
-        togglePassword.addEventListener('click', function() {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
-            
-            // Toggle eye icon
-            this.querySelector('i').classList.toggle('bi-eye');
-            this.querySelector('i').classList.toggle('bi-eye-slash');
-        });
-    </script>
+</div>
 </body>
 </html>
