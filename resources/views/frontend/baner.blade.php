@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-6 mb-4">
                 <div class="banner-card animate delay-1">
-                    <img src="/api/placeholder/600/300" class="banner-img" alt="تخفیف موبایل">
+                    <img src="/images/off01.jpg" class="banner-img" alt="تخفیف موبایل">
                     <div class="banner-overlay">
                         <h3 class="banner-title">تخفیف ویژه موبایل</h3>
                         <p>تا ۳۰٪ تخفیف برای انواع گوشی‌های هوشمند</p>
@@ -14,7 +14,7 @@
             </div>
             <div class="col-lg-6 mb-4">
                 <div class="banner-card animate delay-2">
-                    <img src="/api/placeholder/600/300" class="banner-img" alt="فروش ویژه لپ تاپ">
+                    <img src="/images/off02.jpg" class="banner-img" alt="فروش ویژه لپ تاپ">
                     <div class="banner-overlay">
                         <h3 class="banner-title">فروش ویژه لپ تاپ</h3>
                         <p>بهترین لپ تاپ‌ها با قیمت استثنایی</p>

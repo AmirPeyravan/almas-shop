@@ -7,7 +7,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="product-card animate delay-1">
                     <div class="product-image-wrapper">
-                        <img src="/api/placeholder/300/300" class="product-image" alt="گوشی موبایل">
+                        <img src="/images/pro01.jpg" class="product-image" alt="گوشی موبایل">
                         <div class="discount-badge">۲۰٪ تخفیف</div>
                         <div class="product-actions">
                             <a href="#" class="action-btn">
@@ -47,7 +47,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="product-card animate delay-2">
                     <div class="product-image-wrapper">
-                        <img src="/api/placeholder/300/300" class="product-image" alt="لپ تاپ">
+                        <img src="/images/pro02.jpg" class="product-image" alt="لپ تاپ">
                         <div class="product-actions">
                             <a href="#" class="action-btn">
                                 <i class="bi bi-heart"></i>
@@ -85,7 +85,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="product-card animate delay-3">
                     <div class="product-image-wrapper">
-                        <img src="/api/placeholder/300/300" class="product-image" alt="ساعت هوشمند">
+                        <img src="/images/pro03.jpg" class="product-image" alt="ساعت هوشمند">
                         <div class="discount-badge">۱۵٪ تخفیف</div>
                         <div class="product-actions">
                             <a href="#" class="action-btn">
@@ -125,7 +125,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div class="product-card animate delay-4">
                     <div class="product-image-wrapper">
-                        <img src="/api/placeholder/300/300" class="product-image" alt="هدفون">
+                        <img src="/images/pro04.jpg" class="product-image" alt="هدفون">
                         <div class="product-actions">
                             <a href="#" class="action-btn">
                                 <i class="bi bi-heart"></i>

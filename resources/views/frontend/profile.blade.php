@@ -34,17 +34,6 @@
             overflow-x: hidden;
         }
         
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234f46e5' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            z-index: -1;
-        }
-        
         .profile-container {
             max-width: 950px;
             margin: 0 auto;
@@ -81,17 +70,6 @@
             margin-bottom: 30px;
         }
         
-        .title-card::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            right: 0;
-            height: 40px;
-            background: var(--card-bg);
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-        }
-        
         .title-card h2 {
             margin: 0;
             font-weight: 700;
@@ -110,7 +88,6 @@
             border-radius: 15px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
             overflow: hidden;
-            transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
             margin-bottom: 20px;
         }
@@ -130,7 +107,6 @@
             margin-left: 25px;
             overflow: hidden;
             border: 3px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -198,14 +174,6 @@
             transition: all 0.2s ease;
         }
         
-        .edit-profile-btn:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-        
-        .edit-profile-btn i {
-            margin-left: 5px;
-        }
-        
         .section-heading {
             padding: 20px 30px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -251,167 +219,6 @@
             color: var(--primary);
             font-size: 0.9rem;
             text-decoration: none;
-            transition: all 0.2s ease;
-        }
-        
-        .action-link:hover {
-            color: var(--primary-dark);
-            text-decoration: underline;
-        }
-        
-        .action-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--light);
-            transition: all 0.2s ease;
-            margin-right: 10px;
-        }
-        
-        .action-icon:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .form-row {
-            margin-bottom: 20px;
-        }
-        
-        .form-label {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-        
-        .form-control {
-            width: 100%;
-            height: 45px;
-            background-color: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-            border-radius: 8px;
-            padding: 0 15px;
-            font-size: 1rem;
-            transition: all 0.2s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
-        
-        .save-btn {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 25px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-        
-        .save-btn:hover {
-            background: #0da56e;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
-        }
-        
-        .cancel-btn {
-            background: transparent;
-            color: var(--text-muted);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 12px 25px;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            margin-right: 10px;
-        }
-        
-        .cancel-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-        }
-        
-        .setting-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .setting-row:last-child {
-            border-bottom: none;
-        }
-        
-        .setting-info {
-            flex: 1;
-        }
-        
-        .setting-title {
-            font-weight: 500;
-            color: white;
-            margin-bottom: 5px;
-        }
-        
-        .setting-desc {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-        
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 48px;
-            height: 24px;
-        }
-        
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .toggle-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.15);
-            transition: .4s;
-            border-radius: 34px;
-        }
-        
-        .toggle-slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            right: 4px;
-            bottom: 3px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .toggle-slider {
-            background-color: var(--secondary);
-        }
-        
-        input:checked + .toggle-slider:before {
-            transform: translateX(-24px);
         }
         
         .orders-card {
@@ -424,11 +231,6 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: all 0.2s ease;
-        }
-        
-        .order-item:hover {
-            background-color: rgba(255, 255, 255, 0.03);
         }
         
         .order-item:last-child {
@@ -495,11 +297,6 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.2s ease;
-        }
-        
-        .view-details:hover {
-            color: var(--primary-dark);
         }
         
         .view-details i {
