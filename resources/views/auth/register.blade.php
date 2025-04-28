@@ -20,7 +20,10 @@
             <div class="register-body">
                 <h3 class="register-title">ثبت نام در الماس</h3>
 
-                <form action="#" method="post">
+                <form method="post" action="{{ route('register') }}">
+
+                @csrf
+
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="firstName" name="firstName" placeholder="نام" required>
                         <label for="firstName">نام</label>
@@ -44,6 +47,14 @@
                     <div class="form-floating form-floating-password mb-4">
                         <input type="password" class="form-control" id="password" name="password" placeholder="رمز عبور" required>
                         <label for="password">رمز عبور</label>
+                        <span class="password-toggle" id="togglePassword">
+                            <i class="bi bi-eye"></i>
+                        </span>
+                    </div>
+
+                    <div class="form-floating form-floating-password mb-4">
+                        <input type="password" class="form-control" id="password" name="password_confirmation" placeholder="تکرار رمز عبور" required>
+                        <label for="password">تکرار رمز عبور</label>
                         <span class="password-toggle" id="togglePassword">
                             <i class="bi bi-eye"></i>
                         </span>
