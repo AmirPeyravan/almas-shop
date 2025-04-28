@@ -18,22 +18,33 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        // 1. بررسی داده‌های ارسالی
+        dd($request->all()); // چاپ داده‌های فرم برای دیباگ
+    
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
+            'terms' => 'required|accepted',
         ]);
     
+        // 2. بررسی خطاهای اعتبارسنجی
         if ($validator->fails()) {
+            dd($validator->errors()); // چاپ خطاها
             return redirect()->back()->withErrors($validator)->withInput();
         }
     
         try {
-            
-            $role = \App\Models\Role::where('roleStatus', 'user')->firstOrFail();
+            // 3. بررسی وجود نقش
+            $role = \App\Models\Role::where('roleStatus', 'user')->first();
+            if (!$role) {
+                dd('No role found with roleStatus=user'); // اگر نقش پیدا نشد
+            }
     
+            // 4. تلاش برای ایجاد کاربر
+            dd('About to create user'); // قبل از ایجاد کاربر
             User::create([
                 'firstName' => $request->firstName,
                 'lastName' => $request->lastName,
@@ -45,9 +56,9 @@ class AuthController extends Controller
     
             return redirect()->route('login')->with('success', 'Registration successful!');
         } catch (\Exception $e) {
-            // برای دیباگ
-            dd($e->getMessage());
-            return redirect()->back()->with('error', 'Registration failed. Please try again.')->withInput();
+            // 5. چاپ خطا برای دیباگ
+            dd('Error: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Registration failed: ' . $e->getMessage())->withInput();
         }
     }
     
