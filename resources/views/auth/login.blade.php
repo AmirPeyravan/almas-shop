@@ -7,8 +7,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/auth-css/login.css" >
+    <link rel="stylesheet" href="/notification/not.css">
 </head>
 <body>
+<script src="/notification/not.js"></script>
+
+@if(session('error'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showNotification('error', 'خطا', '{{ session('error') }}');
+        });
+    </script>
+@endif
+
+@if(session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showNotification('success', 'عملیات موفق', '{{ session('success') }}');
+
+            setTimeout(function() {
+                window.location.href = "{{ url('profile') }}";
+            }, 3000);
+        });
+    </script>
+@endif
+
     <div class="login-container">
         <div class="login-card">
             <div class="login-header">
@@ -20,7 +43,8 @@
             <div class="login-body">
                 <h3 class="login-title">ورود به حساب کاربری</h3>
 
-                <form action="#" method="post">
+                <form action="{{ route('auth.login') }}" method="post">
+                    @csrf
                     <div class="form-floating mb-4">
                         <input type="text" class="form-control" id="username" name="username" placeholder="نام کاربری" required>
                         <label for="username">نام کاربری</label>

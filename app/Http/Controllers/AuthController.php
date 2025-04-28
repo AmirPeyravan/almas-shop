@@ -18,50 +18,22 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        // 1. بررسی داده‌های ارسالی
-        dd($request->all()); // چاپ داده‌های فرم برای دیباگ
-    
-        $validator = Validator::make($request->all(), [
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'terms' => 'required|accepted',
+        $craeteUser = User::create([
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 2
         ]);
-    
-        // 2. بررسی خطاهای اعتبارسنجی
-        if ($validator->fails()) {
-            dd($validator->errors()); // چاپ خطاها
-            return redirect()->back()->withErrors($validator)->withInput();
+
+        if(!$craeteUser){
+            return back()->with('failed','عملیات نا موفق ');
         }
-    
-        try {
-            // 3. بررسی وجود نقش
-            $role = \App\Models\Role::where('roleStatus', 'user')->first();
-            if (!$role) {
-                dd('No role found with roleStatus=user'); // اگر نقش پیدا نشد
-            }
-    
-            // 4. تلاش برای ایجاد کاربر
-            dd('About to create user'); // قبل از ایجاد کاربر
-            User::create([
-                'firstName' => $request->firstName,
-                'lastName' => $request->lastName,
-                'username' => $request->username,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role_id' => $role->id,
-            ]);
-    
-            return redirect()->route('login')->with('success', 'Registration successful!');
-        } catch (\Exception $e) {
-            // 5. چاپ خطا برای دیباگ
-            dd('Error: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Registration failed: ' . $e->getMessage())->withInput();
-        }
+        session()->flash('success', 'در حال ساخت حساب... - سپس به حساب خود وارد شوید');
+        return redirect()->back();
     }
-    
+
 
     public function showLoginForm()
     {
@@ -70,16 +42,26 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('profile');
+            //return redirect()->intended('profile');
+            //return back()->with('success','عملیات موفق - لطفا وارد شوید');
+
+            session()->flash('success', 'خوش آمدید - در حال ورود ...');
+            return redirect()->back();
+
         }
 
-        return back()->withErrors([
-            'email' => 'اطلاعات وارد شده صحیح نیست.',
-        ]);
+        session()->flash('error', 'اطلاعات ورود اشتباه است.');
+        return redirect()->back();
+
+        //return back()->with('error','عملیات نا موفق ');
+
+//        return back()->withErrors([
+//            'email' => 'اطلاعات وارد شده صحیح نیست.',
+//        ]);
     }
 
     public function logout(Request $request)

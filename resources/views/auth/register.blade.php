@@ -7,8 +7,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/css/auth-css/register.css" >
+    <link rel="stylesheet" href="/notification/not.css">
 </head>
 <body>
+<script src="/notification/not.js"></script>
+
+@if(session('error'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showNotification('error', 'خطا', '{{ session('error') }}');
+        });
+    </script>
+@endif
+
+@if(session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showNotification('success', 'عملیات موفق', '{{ session('success') }}');
+
+            setTimeout(function() {
+                window.location.href = "{{ url('login') }}";
+            }, 4500);
+        });
+    </script>
+@endif
+
     <div class="register-container">
         <div class="register-card">
             <div class="register-header">
@@ -20,10 +43,8 @@
             <div class="register-body">
                 <h3 class="register-title">ثبت نام در الماس</h3>
 
-                <form method="post" action="{{ route('register') }}">
-
+                <form method="post" action="{{ route('auth.register') }}">
                 @csrf
-
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="firstName" name="firstName" placeholder="نام" required>
                         <label for="firstName">نام</label>
@@ -47,14 +68,6 @@
                     <div class="form-floating form-floating-password mb-4">
                         <input type="password" class="form-control" id="password" name="password" placeholder="رمز عبور" required>
                         <label for="password">رمز عبور</label>
-                        <span class="password-toggle" id="togglePassword">
-                            <i class="bi bi-eye"></i>
-                        </span>
-                    </div>
-
-                    <div class="form-floating form-floating-password mb-4">
-                        <input type="password" class="form-control" id="password" name="password_confirmation" placeholder="تکرار رمز عبور" required>
-                        <label for="password">تکرار رمز عبور</label>
                         <span class="password-toggle" id="togglePassword">
                             <i class="bi bi-eye"></i>
                         </span>
@@ -94,6 +107,7 @@
         </div>
     </div>
 
+    <script src="/notification/not.js"></script>
     <script>
         // Toggle Password Visibility
         const togglePassword = document.getElementById('togglePassword');
