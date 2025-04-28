@@ -451,7 +451,7 @@
             </div>
 
             <div class="home-link">
-                <a href="#">بازگشت به صفحه اصلی</a>
+                <a href="/">بازگشت به صفحه اصلی</a>
             </div>
         </div>
     </div>

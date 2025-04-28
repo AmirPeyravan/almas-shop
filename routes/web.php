@@ -23,4 +23,11 @@ Route::get('/contact', function () {
     return view('frontend.contact');
 });
 
+Route::get('/cart', function () {
+    return view('frontend.cart');
+});
+
+Route::get('/profile', function () {
+    return view('frontend.profile');
+});
 

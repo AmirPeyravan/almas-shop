@@ -31,10 +31,13 @@
                     <i class="bi bi-search search-icon"></i>
                 </div>
 
+                <a href="/cart">
                 <button class="btn-cart ms-2 position-relative">
                     <i class="bi bi-cart3"></i>
-                    <span class="cart-count">3</span>
+                    <span class="cart-count">0</span>
                 </button>
+                </a>
+
                 <a href="/login">
                     <button class="btn-user ms-2">
                         <i class="bi bi-person me-1"></i>
