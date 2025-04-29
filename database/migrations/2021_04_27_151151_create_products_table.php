@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('stock_quantity');
             $table->string('thumbnail');
             $table->timestamps();
+
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
         });
     }
 

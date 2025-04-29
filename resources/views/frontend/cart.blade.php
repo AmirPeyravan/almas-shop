@@ -490,7 +490,7 @@
 <body>
     <div class="cart-container">
         <div class="cart-header">
-            <a href="#" class="store-logo">
+            <a href="/" class="store-logo">
                 <i class="bi bi-gem"></i>الماس
             </a>
         </div>

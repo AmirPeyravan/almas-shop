@@ -383,7 +383,7 @@
 <body>
     <div class="profile-container">
         <div class="header">
-            <a href="#" class="store-logo">
+            <a href="/" class="store-logo">
                 <i class="bi bi-gem"></i>الماس
             </a>
         </div>
