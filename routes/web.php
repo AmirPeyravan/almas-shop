@@ -50,6 +50,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/profile', [ProfileController::class, 'profile'])->middleware('auth');
 
+Route::post('/profile/upload-image', [\App\Http\Controllers\ProfileController::class, 'uploadImage'])->name('profile.uploadImage')->middleware('auth');
+
+
 
 
 

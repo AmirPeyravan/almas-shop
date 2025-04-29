@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->unsignedBigInteger('role_id'); 
+            $table->string('profile_image')->nullable();
             $table->timestamps();
         
             

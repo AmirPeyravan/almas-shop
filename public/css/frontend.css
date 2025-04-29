@@ -868,6 +868,10 @@ body {
     animation: fadeIn 0.6s ease forwards;
 }
 
+#btn-logOut{
+    background-color: rgb(194, 1, 1);
+}
+
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }

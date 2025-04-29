@@ -395,11 +395,25 @@
             </div>
             
             <div class="profile-info">
-                <div class="profile-avatar">
-                    <div class="avatar-placeholder">
-                        <i class="bi bi-person"></i>
-                    </div>
-                </div>
+                
+
+<form id="profileForm" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="profile-avatar">
+        @if($user->profile_image)
+            <img src="{{ asset('storage/' . $user->profile_image) }}" alt="Profile Image" class="img-fluid" width="150" id="profileImagePreview" onclick="document.getElementById('profile_image_input').click();">
+        @else
+            <div class="avatar-placeholder" onclick="document.getElementById('profile_image_input').click();">
+                <i class="bi bi-person"></i>
+            </div>
+        @endif
+        <input type="file" name="profile_image" id="profile_image_input" style="display: none;" onchange="previewImage()">
+    </div>
+    <button type="submit" class="btn btn-primary">ذخیره تصویر پروفایل</button>
+</form>
+
+
+
                 <div class="profile-details">
                 <div class="user-name">{{ old('firstName', $user->firstName) }} {{ old('lastName', $user->lastName) }}</div>
                     <div class="user-info">عضویت از ۱۴۰۲/۰۶/۱۵</div>
@@ -522,5 +536,49 @@
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function previewImage() {
+        const fileInput = document.getElementById('profile_image_input');
+        const preview = document.getElementById('profileImagePreview');
+        const file = fileInput.files[0];
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    // ارسال تصویر با استفاده از AJAX
+    document.getElementById('profileForm').onsubmit = function(e) {
+        e.preventDefault(); // جلوگیری از ارسال معمول فرم
+
+        let formData = new FormData(this);
+        
+        fetch("{{ route('profile.uploadImage') }}", {
+            method: "POST",
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('تصویر پروفایل با موفقیت ذخیره شد.');
+                location.reload(); // برای بارگذاری مجدد صفحه و نمایش تصویر جدید
+            } else {
+                alert('خطا در ذخیره تصویر');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('خطا در ارسال تصویر');
+        });
+    };
+</script>
+
 </body>
 </html>
