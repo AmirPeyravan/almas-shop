@@ -38,12 +38,31 @@
                 </button>
                 </a>
 
-                <a href="/login">
-                    <button class="btn-user ms-2">
+                @auth
+
+                <a href="/profile">
+                     <button class="btn-user ms-2">
                         <i class="bi bi-person me-1"></i>
-                        ورود - ثبت نام
+                            @auth
+                            {{ Auth::user()->firstName }}
+                            @else
+                                ورود - ثبت نام
+                            @endauth
                     </button>
                 </a>
+                @else
+                <a href="/login">
+                     <button class="btn-user ms-2">
+                        <i class="bi bi-person me-1"></i>
+                            @auth
+                            {{ Auth::user()->firstName }}
+                            @else
+                                ورود - ثبت نام
+                            @endauth
+                    </button>
+                </a>
+                @endauth
+
             </div>
         </div>
     </div>

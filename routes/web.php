@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('frontend.master');
@@ -32,6 +34,10 @@ Route::get('/profile', function () {
     return view('frontend.profile');
 });
 
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+});
+
 /////////////////////////////////////////
 
 Route::get('/register', [AuthController::class, 'showRegisterForm']);
@@ -42,9 +48,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/profile', function () {
-    return view('frontend.profile');
-})->middleware('auth');
+Route::get('/profile', [ProfileController::class, 'profile'])->middleware('auth');
 
 
 

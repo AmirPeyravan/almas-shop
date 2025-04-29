@@ -401,7 +401,7 @@
                     </div>
                 </div>
                 <div class="profile-details">
-                    <div class="user-name">علی محمدی</div>
+                <div class="user-name">{{ old('firstName', $user->firstName) }} {{ old('lastName', $user->lastName) }}</div>
                     <div class="user-info">عضویت از ۱۴۰۲/۰۶/۱۵</div>
                     <div class="user-badges">
                         <span class="badge badge-primary">
@@ -427,19 +427,17 @@
             <div class="info-list">
                 <div class="info-item">
                     <div class="info-label">نام و نام خانوادگی</div>
-                    <div class="info-value">علی محمدی</div>
+                    <div class="info-value">{{ old('firstName', $user->firstName) }} {{ old('lastName', $user->lastName) }}</div>
                 </div>
-                <div class="info-item">
-                    <div class="info-label">شماره موبایل</div>
-                    <div class="info-value">۰۹۱۲۳۴۵۶۷۸۹</div>
-                </div>
+
                 <div class="info-item">
                     <div class="info-label">پست الکترونیک</div>
-                    <div class="info-value">ali.mohammadi@example.com</div>
+                    <div class="info-value">{{ old('email', $user->email) }}</div>
                 </div>
+
                 <div class="info-item">
-                    <div class="info-label">کد ملی</div>
-                    <div class="info-value">۱۲۳۴۵۶۷۸۹۰</div>
+                    <div class="info-label">نام کاربری</div>
+                    <div class="info-value">{{ old('username', $user->username) }}</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label">رمز عبور</div>
