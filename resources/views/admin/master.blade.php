@@ -24,20 +24,20 @@
             <p class="menu-heading">عمومی</p>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a href="#orders" class="nav-link" data-section="orders">
+                    <a href="/admin/orders" class="nav-link" data-section="orders">
                         <i class="bi bi-bag-fill"></i>
                         سفارشات
                         <span class="nav-badge">12</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#products" class="nav-link" data-section="products">
+                    <a href="/admin/products" class="nav-link" data-section="products">
                         <i class="bi bi-box-seam-fill"></i>
                         محصولات
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#customers" class="nav-link" data-section="customers">
+                    <a href="/admin/customers" class="nav-link" data-section="customers">
                         <i class="bi bi-people-fill"></i>
                         مشتریان
                     </a>
@@ -57,19 +57,19 @@
             <p class="menu-heading">تنظیمات</p>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a href="#store-info" class="nav-link" data-section="store-info">
+                    <a href="/admin/shopInfo" class="nav-link" data-section="store-info">
                         <i class="bi bi-shop"></i>
                         اطلاعات فروشگاه
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#admin-users" class="nav-link" data-section="admin-users">
+                    <a href="/admin/users" class="nav-link" data-section="admin-users">
                         <i class="bi bi-person-fill-gear"></i>
                         کاربران مدیریت
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#system-settings" class="nav-link" data-section="system-settings">
+                    <a href="/admin/settings" class="nav-link" data-section="system-settings">
                         <i class="bi bi-gear-fill"></i>
                         تنظیمات سیستم
                     </a>
