@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دسته‌بندی‌ها - فروشگاه آنلاین الماس</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap');
+        
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --dark: #1e1e2d;
+            --darker: #151521;
+            --light: #e0e0e0;
+            --card-bg: #252836;
+            --accent: #f43f5e;
+            --text-muted: #94a3b8;
+            --success: #059669;
+            --warning: #f59e0b;
+            --danger: #dc2626;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1), transparent 70%),
+                        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234f46e5' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            z-index: -1;
+            opacity: 0.9;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--dark);
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .store-logo {
+            font-weight: 800;
+            font-size: 2rem;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .store-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .store-logo i {
+            color: var(--accent);
+            margin-left: 8px;
+            font-size: 1.8rem;
+        }
+        
+        .admin-tag {
+            background-color: rgba(255, 255, 255, 0.25);
+            color: white;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 50px;
+            margin-top: 8px;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            position: absolute;
+            left: 20px;
+            top: 30px;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-toggle:hover {
+            transform: rotate(90deg);
+        }
+        
+        .sidebar-menu {
+            padding: 25px 0;
+        }
+        
+        .menu-heading {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 12px 25px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-top: 15px;
+            border-right: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item {
+            position: relative;
+            margin: 5px 0;
+        }
+        
+        .nav-link {
+            padding: 14px 25px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            border-radius: 0 50px 50px 0;
+        }
+        
+        .nav-link i {
+            width: 26px;
+            text-align: center;
+            margin-left: 14px;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-link:hover i {
+            transform: scale(1.2);
+        }
+        
+        .nav-link.active {
+            color: white;
+            background-color: rgba(99, 102, 241, 0.15);
+            border-right: 4px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
+        }
+        
+        .nav-link:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateX(-5px);
+        }
+        
+        .nav-badge {
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 50px;
+            margin-right: auto;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-right: 280px;
+            padding: 35px;
+            min-height: 100vh;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+        }
+        
+        .page-header {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--card-bg);
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .page-title {
+            font-weight: 800;
+            font-size: 2rem;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .breadcrumb {
+            margin-bottom: 0;
+            background: transparent;
+        }
+        
+        .breadcrumb-item {
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb-item a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumb-item a:hover {
+            color: var(--primary);
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--light);
+        }
+        
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: var(--text-muted);
+        }
+        
+        /* Content Card */
+        .content-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .content-card:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        }
+        
+        .content-card-header {
+            padding: 25px 30px;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .content-card-title {
+            font-weight: 700;
+            margin: 0;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .content-card-body {
+            padding: 30px;
+        }
+        
+        /* Table */
+        .table-responsive {
+            overflow-x: auto;
+        }
+        
+        .admin-table {
+            width: 100%;
+            color: var(--light);
+            margin-bottom: 0;
+        }
+        
+        .admin-table th {
+            padding: 18px;
+            font-weight: 600;
+            border-top: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        
+        .admin-table td {
+            padding: 18px;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .admin-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .admin-table tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .admin-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: scale(1.01);
+        }
+        
+        .category-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            max-width: 400px;
+        }
+        
+        /* Top Header Bar */
+        .top-bar {
+            padding: 10px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+        
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .top-bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .action-icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.12);
+            color: var(--light);
+            border: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .action-icon-btn:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--dark);
+            animation: bounce 1.5s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .admin-dropdown {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.12);
+            padding: 8px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-dropdown:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .admin-dropdown img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 12px;
+        }
+        
+        .admin-info {
+            line-height: 1.3;
+            text-align: right;
+        }
+        
+        .admin-name {
+            font-weight: 600;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .admin-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        .dropdown-toggle {
+            color: var(--text-muted);
+            margin-right: 12px;
+        }
+        
+        /* Forms */
+        .search-form {
+            position: relative;
+            max-width: 300px;
+            width: 100%;
+        }
+        
+        .search-input {
+            width: 100%;
+            height: 48px;
+            background-color: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: white;
+            border-radius: 15px;
+            padding: 0 50px 0 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(100%);
+            }
+            
+            .main-content {
+                margin-right: 0;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .mobile-toggle-main {
+                background: transparent;
+                border: none;
+                color: white;
+                font-size: 1.6rem;
+                margin-right: 20px;
+                transition: transform 0.3s ease;
+            }
+            
+            .mobile-toggle-main:hover {
+                transform: rotate(90deg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .search-form {
+                width: 100%;
+                max-width: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 25px 20px;
+            }
+            
+            .admin-dropdown {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <button class="mobile-toggle">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <a href="#" class="store-logo">
+                <i class="bi bi-gem"></i>الماس
+            </a>
+            <div class="admin-tag">پنل مدیریت</div>
+        </div>
+        <div class="sidebar-menu">
+            <p class="menu-heading">عمومی</p>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link" data-section="dashboard">
+                        <i class="bi bi-grid-1x2-fill"></i>
+                        داشبورد
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#orders" class="nav-link" data-section="orders">
+                        <i class="bi bi-bag-fill"></i>
+                        سفارشات
+                        <span class="nav-badge">12</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#products" class="nav-link" data-section="products">
+                        <i class="bi bi-box-seam-fill"></i>
+                        محصولات
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#customers" class="nav-link" data-section="customers">
+                        <i class="bi bi-people-fill"></i>
+                        مشتریان
+                    </a>
+                </li>
+            </ul>
+            
+            <p class="menu-heading">مدیریت فروشگاه</p>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#categories" class="nav-link active" data-section="categories">
+                        <i class="bi bi-tag-fill"></i>
+                        دسته‌بندی‌ها
+                    </a>
+                </li>
+            </ul>
+            
+            <p class="menu-heading">تنظیمات</p>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="#store-info" class="nav-link" data-section="store-info">
+                        <i class="bi bi-shop"></i>
+                        اطلاعات فروشگاه
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#admin-users" class="nav-link" data-section="admin-users">
+                        <i class="bi bi-person-fill-gear"></i>
+                        کاربران مدیریت
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#system-settings" class="nav-link" data-section="system-settings">
+                        <i class="bi bi-gear-fill"></i>
+                        تنظیمات سیستم
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <button class="mobile-toggle-main">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div class="search-form">
+                    <input type="text" class="search-input" placeholder="جستجو...">
+                    <i class="bi bi-search search-icon"></i>
+                </div>
+            </div>
+            <div class="top-bar-actions">
+                <button class="action-icon-btn">
+                    <i class="bi bi-bell"></i>
+                    <span class="notification-badge">5</span>
+                </button>
+                <button class="action-icon-btn">
+                    <i class="bi bi-envelope"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <div class="admin-dropdown">
+                    <img src="https://via.placeholder.com/150" alt="Admin">
+                    <div class="admin-info">
+                        <div class="admin-name">علی محمدی</div>
+                        <div class="admin-role">مدیر ارشد</div>
+                    </div>
+                    <i class="bi bi-chevron-down dropdown-toggle"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">دسته‌بندی‌ها</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">دسته‌بندی‌ها</li>
+                </ol>
+            </nav>
+        </div>
+        
+        <!-- Categories Table -->
+        <div class="content-card">
+            <div class="content-card-header">
+                <h5 class="content-card-title">لیست دسته‌بندی‌ها</h5>
+            </div>
+            <div class="content-card-body">
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>نام</th>
+                                <th>توضیحات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الکترونیک</td>
+                                <td class="category-description">شامل گوشی‌های هوشمند، لپ‌تاپ‌ها و لوازم جانبی</td>
+                            </tr>
+                            <tr>
+                                <td>مد و پوشاک</td>
+                                <td class="category-description">لباس‌های مردانه، زنانه و بچگانه</td>
+                            </tr>
+                            <tr>
+                                <td>خانه و آشپزخانه</td>
+                                <td class="category-description">لوازم خانگی و وسایل آشپزی</td>
+                            </tr>
+                            <tr>
+                                <td>آرایشی و بهداشتی</td>
+                                <td class="category-description">محصولات مراقبت از پوست و مو</td>
+                            </tr>
+                            <tr>
+                                <td>مواد غذایی</td>
+                                <td class="category-description">محصولات خوراکی و نوشیدنی‌ها</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap & Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const mobileToggleMain = document.querySelector('.mobile-toggle-main');
+            const sidebar = document.querySelector('.sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageTitle = document.querySelector('.page-title');
+            const breadcrumbActive = document.querySelector('.breadcrumb-item.active');
+
+            // باز و بسته کردن سایدبار در موبایل
+            mobileToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                mainContent.classList.toggle('sidebar-active');
+            });
+
+            mobileToggleMain.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                mainContent.classList.toggle('sidebar-active');
+            });
+
+            // بستن سایدبار با کلیک خارج از آن
+            document.addEventListener('click', function(event) {
+                if (!sidebar.contains(event.target) && !mobileToggleMain.contains(event.target) && sidebar.classList.contains('active')) {
+                    sidebar.classList.remove('active');
+                    mainContent.classList.remove('sidebar-active');
+                }
+            });
+
+            // مدیریت کلیک روی لینک‌های منو و تغییر URL
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const section = this.getAttribute('data-section');
+                    const title = this.textContent.trim();
+
+                    // تغییر کلاس active
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // تغییر URL بدون رفرش
+                    history.pushState({ section }, title, `#${section}`);
+
+                    // به‌روزرسانی عنوان صفحه و بردکرامب
+                    pageTitle.textContent = title;
+                    breadcrumbActive.textContent = title;
+
+                    // انیمیشن برای محتوای اصلی
+                    mainContent.style.opacity = '0';
+                    mainContent.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        mainContent.style.opacity = '1';
+                        mainContent.style.transform = 'translateY(0)';
+                    }, 300);
+
+                    // بستن سایدبار در موبایل
+                    if (window.innerWidth <= 992) {
+                        sidebar.classList.remove('active');
+                        mainContent.classList.remove('sidebar-active');
+                    }
+
+                    console.log(`بارگذاری بخش: ${section}`);
+                });
+            });
+
+            // مدیریت جستجو
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('input', function() {
+                const searchValue = this.value.trim();
+                console.log('جستجو برای:', searchValue);
+            });
+
+            // مدیریت اعلان‌ها
+            const notificationButtons = document.querySelectorAll('.action-icon-btn');
+            notificationButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const type = this.querySelector('i').classList.contains('bi-bell') ? 'notification' : 'message';
+                    alert(`نمایش ${type === 'notification' ? 'اعلان‌ها' : 'پیام‌ها'}`);
+                });
+            });
+
+            // مدیریت دراپ‌داون ادمین
+            const adminDropdown = document.querySelector('.admin-dropdown');
+            adminDropdown.addEventListener('click', function() {
+                alert('نمایش گزینه‌های پروفایل ادمین');
+            });
+
+            // مدیریت بازگشت به عقب/جلو در مرورگر
+            window.addEventListener('popstate', function(event) {
+                if (event.state && event.state.section) {
+                    const section = event.state.section;
+                    const link = document.querySelector(`.nav-link[data-section="${section}"]`);
+                    if (link) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                        pageTitle.textContent = link.textContent.trim();
+                        breadcrumbActive.textContent = link.textContent.trim();
+                        console.log(`بازگشت به بخش: ${section}`);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+    public function showProfile()
+    {
+        return view('frontend.profile');
+    }
+    
     public function profile()
     {
         $user = Auth::user();
