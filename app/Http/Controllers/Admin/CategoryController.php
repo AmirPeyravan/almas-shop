@@ -2,18 +2,30 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Admin\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
     public function showCategories()
     {
-        return view('admin.categories.categories');
+        $categories = Category::all();
+        return view('admin.categories.categories', compact('categories'));
     }
-    
+
     public function addCategory()
     {
         return view('admin.categories.addCategories');
+    }
+
+    public function createCategory(Request $request)
+    {
+        Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('admin.showCategories')->with('success', 'دسته‌بندی با موفقیت اضافه شد.');
     }
 }

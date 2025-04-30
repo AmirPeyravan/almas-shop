@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class User extends Controller
+class UserManagement extends Controller
 {
     public function showUsers()
     {
-        return view('admin.userManagement');
+        $users = User::all();
+        return view('admin.userManagement', compact('users'));
     }
 }

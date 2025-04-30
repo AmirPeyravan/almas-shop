@@ -57,6 +57,10 @@ Route::prefix('admin')
         Route::get('/', [AdminController::class, 'showAdminPanel']);
         Route::get('/categories', [CategoryController::class, 'showCategories']);
         Route::get('/categories/add', [CategoryController::class, 'addCategory']);
+
+        Route::post('/categories', [CategoryController::class, 'createCategory'])
+            ->name('categories.create');
+
         Route::get('/customers', [Customers::class, 'showCustomers']);
         Route::get('/orders', [Order::class, 'showOrders']);
         Route::get('/products', [Product::class, 'showProducts']);

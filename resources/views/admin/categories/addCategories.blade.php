@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Main Content -->
-<div class="main-content">      
+<div class="main-content">
     <!-- Page Header -->
     <div class="page-header">
         <h1 class="page-title">افزودن دسته‌بندی</h1>
@@ -15,7 +15,7 @@
             </ol>
         </nav>
     </div>
-    
+
     <!-- Add Category Form -->
     <div class="content-card">
         <div class="content-card-header">
@@ -23,7 +23,9 @@
         </div>
         <div class="content-card-body">
             <div id="formAlert" class="alert alert-custom d-none"></div>
-            <form id="addCategoryForm" action="/categories" method="POST">
+
+            <form id="addCategoryForm" method="post" action="{{ route('categories.create') }}">
+                @csrf
                 <div class="mb-4">
                     <label for="categoryName" class="form-label">نام دسته‌بندی</label>
                     <input type="text" class="form-control" id="categoryName" name="name" placeholder="مثال: الکترونیک" required>
@@ -44,6 +46,7 @@
                     </button>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
