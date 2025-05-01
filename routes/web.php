@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\Setting;
 use App\Http\Controllers\Admin\UserManagement;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Admin\Category;
 use App\Http\Middleware\adminCheck;
 use App\Http\Middleware\CheckActive;
 
@@ -18,8 +19,12 @@ use App\Http\Middleware\CheckActive;
 Route::prefix('/')
     ->middleware([CheckActive::class])
     ->group(function () {
+        //::get('/', [CategoryController::class, 'showCategoriesMaster']);
+
         Route::get('/', function () {
-            return view('frontend.master');
+            $categories = Category::all();
+            return view('frontend.master', compact('categories'))
+                ->with('frontend.categories', $categories);
         });
 
         Route::get('about', function () {

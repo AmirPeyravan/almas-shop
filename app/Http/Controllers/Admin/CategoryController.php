@@ -14,6 +14,12 @@ class CategoryController extends Controller
         return view('admin.categories.categories', compact('categories'));
     }
 
+    public function showCategoriesMaster()
+    {
+        $categories = Category::all();
+        return view('frontend.categories')->with('categories', $categories);
+    }
+
     public function addCategory()
     {
         return view('admin.categories.addCategories');
