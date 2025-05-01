@@ -43,36 +43,40 @@
             <div class="login-body">
                 <h3 class="login-title">ورود به حساب کاربری</h3>
 
-                <form action="{{ route('auth.login') }}" method="post">
-                    @csrf
-                    <div class="form-floating mb-4">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="نام کاربری" required>
-                        <label for="username">نام کاربری</label>
-                    </div>
+                    <form action="{{ route('auth.login') }}" method="post">
+                        @csrf
 
-                    <div class="form-floating form-floating-password mb-4">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="رمز عبور" required>
-                        <label for="password">رمز عبور</label>
-                        <span class="password-toggle" id="togglePassword">
+{{--                        <input type="hidden" name="user_id" value="{{ $user->id }}">--}}
+
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="نام کاربری" required>
+                            <label for="username">نام کاربری</label>
+                        </div>
+
+                        <div class="form-floating form-floating-password mb-4">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="رمز عبور" required>
+                            <label for="password">رمز عبور</label>
+                            <span class="password-toggle" id="togglePassword">
                             <i class="bi bi-eye"></i>
                         </span>
-                    </div>
-
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="remember" name="remember">
-                            <label class="form-check-label" for="remember">
-                                مرا به خاطر بسپار
-                            </label>
                         </div>
-                        <a href="#" class="forgot-password">فراموشی رمز عبور؟</a>
-                    </div>
 
-                    <button type="submit" class="btn btn-login">
-                        <i class="bi bi-box-arrow-in-left"></i>
-                        ورود به حساب
-                    </button>
-                </form>
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                                <label class="form-check-label" for="remember">
+                                    مرا به خاطر بسپار
+                                </label>
+                            </div>
+                            <a href="#" class="forgot-password">فراموشی رمز عبور؟</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-login">
+                            <i class="bi bi-box-arrow-in-left"></i>
+                            ورود به حساب
+                        </button>
+                    </form>
+                    </form>
 
                 <div class="divider">یا ورود با</div>
 

@@ -37,7 +37,8 @@ class AuthController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        $users = User::all();
+        return view('auth.login',compact('users'));
     }
 
     public function login(Request $request)
@@ -45,23 +46,21 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            //return redirect()->intended('profile');
-            //return back()->with('success','عملیات موفق - لطفا وارد شوید');
+            $user = Auth::user();
 
-            session()->flash('success', 'خوش آمدید - در حال ورود ...');
-            return redirect()->back();
-
+            if ($user->isActive == 1) {
+                $request->session()->regenerate();
+                session()->flash('success', 'خوش آمدید - در حال ورود ...');
+                return redirect()->back();
+            } else {
+                Auth::logout();
+                session()->flash('error', 'حساب شما غیرفعال شده است.');
+                return redirect()->back();
+            }
         }
 
-        session()->flash('error', 'اطلاعات ورود اشتباه است.');
+        session()->flash('error', 'نام کاربری یا رمز عبور اشتباه است.');
         return redirect()->back();
-
-        //return back()->with('error','عملیات نا موفق ');
-
-//        return back()->withErrors([
-//            'email' => 'اطلاعات وارد شده صحیح نیست.',
-//        ]);
     }
 
     public function logout(Request $request)

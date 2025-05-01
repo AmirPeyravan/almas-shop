@@ -161,7 +161,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="#" class="btn btn-outline-light">مشاهده همه محصولات</a>
+            <a href="/products" class="btn btn-outline-light">مشاهده همه محصولات</a>
         </div>
     </div>
 </section>

@@ -8,11 +8,15 @@ use App\Http\Controllers\Admin\Customers;
 use App\Http\Controllers\Admin\Order;
 use App\Http\Controllers\Admin\Product;
 use App\Http\Controllers\Admin\Setting;
-use App\Http\Controllers\Admin\User;
+use App\Http\Controllers\Admin\UserManagement;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\adminCheck;
+use App\Http\Middleware\CheckActive;
+
 
 Route::prefix('/')
+    ->middleware([CheckActive::class])
     ->group(function () {
         Route::get('/', function () {
             return view('frontend.master');
@@ -35,7 +39,7 @@ Route::prefix('/')
         Route::post('/register', [AuthController::class, 'register'])
             ->name('auth.register');
 
-        Route::get('/login', [AuthController::class, 'showLoginForm']);
+        Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
         Route::post('/login', [AuthController::class, 'login'])
             ->name('auth.login');
@@ -52,7 +56,7 @@ Route::prefix('/')
 });
 
 Route::prefix('admin')
-    ->middleware('auth')
+    ->middleware(['auth',adminCheck::class])
     ->group(function () {
         Route::get('/', [AdminController::class, 'showAdminPanel']);
         Route::get('/categories', [CategoryController::class, 'showCategories']);
@@ -66,5 +70,7 @@ Route::prefix('admin')
         Route::get('/products', [Product::class, 'showProducts']);
         Route::get('/shopInfo', [AdminController::class, 'showShopInfo']);
         Route::get('/settings', [Setting::class, 'showSettings']);
-        Route::get('/users', [User::class, 'showUsers']);
+        Route::get('/users', [UserManagement::class, 'showUsers']);
+
+        Route::post('/ban-user', [UserManagement::class, 'banUser'])->name('ban.user');
     });

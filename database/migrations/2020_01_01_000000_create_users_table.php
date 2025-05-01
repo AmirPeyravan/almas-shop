@@ -15,17 +15,18 @@ return new class extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password');
-            $table->unsignedBigInteger('role_id'); 
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('isActive')->default(1);
             $table->string('profile_image')->nullable();
             $table->timestamps();
-        
-            
-            $table->foreign('role_id')  
-                  ->references('id')   
-                  ->on('roles')          
-                  ->onDelete('cascade'); 
+
+
+            $table->foreign('role_id')
+                  ->references('id')
+                  ->on('roles')
+                  ->onDelete('cascade');
         });
-        
+
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();

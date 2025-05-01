@@ -36,73 +36,84 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>علی</td>
-                        <td>رضایی</td>
-                        <td>ali_rezaei</td>
-                        <td>ali.rezaei@example.com</td>
-                        <td><span class="role-badge role-admin">ادمین</span></td>
-                        <td><img src="https://via.placeholder.com/40" class="profile-img" alt="علی رضایی"></td>
-                        <td>1403/08部分
+                        @foreach($users as $user)
+                            @if(@$user->isActive == 1)
+                                <tr>
+                                    <td>{{ $user->firstName }}</td>
+                                    <td>{{ $user->lastName }}</td>
+                                    <td>{{ $user->username }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                    <span class="role-badge role-admin">
+                                        @if(@$user->role_id == 1)
+                                            ادمین
+                                        @endif
 
-                            System: 08/01</td>
-                        <td>
-                            <button class="btn btn-edit"><i class="fa-solid fa-edit"></i> ویرایش</button>
-                            <button class="btn btn-delete"><i class="fa-solid fa-trash"></i> حذف</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>مریم</td>
-                        <td>احمدی</td>
-                        <td>maryam_ahmadi</td>
-                        <td>maryam.ahmadi@example.com</td>
-                        <td><span class="role-badge role-user">کاربر</span></td>
-                        <td><img src="https://via.placeholder.com/40" class="profile-img" alt="مریم احمدی"></td>
-                        <td>1403/07/15</td>
-                        <td>
-                            <button class="btn btn-edit"><i class="fa-solid fa-edit"></i> ویرایش</button>
-                            <button class="btn btn-delete"><i class="fa-solid fa-trash"></i> حذف</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>رضا</td>
-                        <td>کریمی</td>
-                        <td>reza_karimi</td>
-                        <td>reza.karimi@example.com</td>
-                        <td><span class="role-badge role-user">کاربر</span></td>
-                        <td><img src="https://via.placeholder.com/40" class="profile-img" alt="رضا کریمی"></td>
-                        <td>1403/06/20</td>
-                        <td>
-                            <button class="btn btn-edit"><i class="fa-solid fa-edit"></i> ویرایش</button>
-                            <button class="btn btn-delete"><i class="fa-solid fa-trash"></i> حذف</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>فاطمه</td>
-                        <td>محمدی</td>
-                        <td>fateme_mohammadi</td>
-                        <td>fateme.mohammadi@example.com</td>
-                        <td><span class="role-badge role-admin">ادمین</span></td>
-                        <td><img src="https://via.placeholder.com/40" class="profile-img" alt="فاطمه محمدی"></td>
-                        <td>1403/05/10</td>
-                        <td>
-                            <button class="btn btn-edit"><i class="fa-solid fa-edit"></i> ویرایش</button>
-                            <button class="btn btn-delete"><i class="fa-solid fa-trash"></i> حذف</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>حسین</td>
-                        <td>نوری</td>
-                        <td>hossein_nouri</td>
-                        <td>hossein.nouri@example.com</td>
-                        <td><span class="role-badge role-user">کاربر</span></td>
-                        <td><img src="https://via.placeholder.com/40" class="profile-img" alt="حسین نوری"></td>
-                        <td>1403/04/25</td>
-                        <td>
-                            <button class="btn btn-edit"><i class="fa-solid fa-edit"></i> ویرایش</button>
-                            <button class="btn btn-delete"><i class="fa-solid fa-trash"></i> حذف</button>
-                        </td>
-                    </tr>
+                                        @if(@$user->role_id == 2)
+                                            کاربر
+                                        @endif
+                                    </span>
+                                    </td>
+                                    <td><img src="{{ asset('storage/' . $user->profile_image) }}" class="profile-img" alt="{{$user->firstName}}"></td>
+                                    <td>{{$user->created_at}}</td>
+
+                                    <form action="{{ route('ban.user') }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+
+                                        @if(@$user->role_id == 1)
+                                            <td>
+                                                <button type="button" class="btn btn-delete" onclick="return confirm('ادمین سیستم را نمیتوان غیرفعال کرد')">
+                                                    <i class="fa-solid fa-trash"></i> غیرفعال کردن
+                                                </button>
+                                            </td>
+                                        @endif
+
+                                        @if(@$user->role_id == 2)
+                                            <td>
+                                                <button type="submit" class="btn btn-delete" onclick="return confirm('آیا مطمعنی ؟')">
+                                                    <i class="fa-solid fa-trash"></i>غیرفعال کردن
+                                                </button>
+                                            </td>
+                                        @endif
+
+
+                                    </form>
+                                </tr>
+                            @endif
+                            @if(@$user->isActive == 0)
+                                <tr>
+                                    <td>{{ $user->firstName }}</td>
+                                    <td>{{ $user->lastName }}</td>
+                                    <td>{{ $user->username }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                    <span class="role-badge role-admin">
+                                        @if(@$user->role_id == 1)
+                                            ادمین
+                                        @endif
+
+                                        @if(@$user->role_id == 2)
+                                            کاربر
+                                        @endif
+                                    </span>
+                                    </td>
+                                    <td><img src="{{ asset('storage/' . $user->profile_image) }}" class="profile-img" alt="{{$user->firstName}}"></td>
+                                    <td>{{$user->created_at}}</td>
+
+                                    <form action="{{ route('ban.user') }}" method="POST" style="display:inline;">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+
+                                        <td>
+                                            <button type="submit" class="btn btn-secondary" onclick="return confirm('آیا فعال شود ؟')">
+                                                <i class="fa-solid fa-trash"></i>غیرفعال شده
+                                            </button>
+                                        </td>
+                                    </form>
+                                </tr>
+                            @endif
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -36,14 +36,16 @@
                         محصولات
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a href="/admin/customers" class="nav-link" data-section="customers">
-                        <i class="bi bi-people-fill"></i>
-                        مشتریان
+                    <a href="/admin/users" class="nav-link" data-section="admin-users">
+                        <i class="bi bi-person-fill-gear"></i>
+                        کاربران
                     </a>
                 </li>
+
             </ul>
-            
+
             <p class="menu-heading">مدیریت فروشگاه</p>
             <ul class="nav flex-column">
                 <li class="nav-item">
@@ -53,7 +55,7 @@
                     </a>
                 </li>
             </ul>
-            
+
             <p class="menu-heading">تنظیمات</p>
             <ul class="nav flex-column">
                 <li class="nav-item">
@@ -62,12 +64,7 @@
                         اطلاعات فروشگاه
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="/admin/users" class="nav-link" data-section="admin-users">
-                        <i class="bi bi-person-fill-gear"></i>
-                        کاربران مدیریت
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="/admin/settings" class="nav-link" data-section="system-settings">
                         <i class="bi bi-gear-fill"></i>
