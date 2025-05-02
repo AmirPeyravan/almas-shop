@@ -18,7 +18,6 @@
     <div class="content-card">
         <div class="content-card-header">
             <h5 class="content-card-title">لیست کاربران</h5>
-            <button class="btn btn-add"><i class="fa-solid fa-plus"></i> افزودن کاربر</button>
         </div>
         <div class="content-card-body">
             <div class="table-responsive">

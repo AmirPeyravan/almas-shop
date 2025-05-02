@@ -17,7 +17,6 @@
     <div class="content-card">
         <div class="content-card-header">
             <h5 class="content-card-title">لیست سفارشات</h5>
-            <button class="btn btn-add"><i class="fas fa-plus"></i> افزودن سفارش</button>
         </div>
         <div class="content-card-body">
             <div class="table-responsive">

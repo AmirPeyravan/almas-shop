@@ -32,6 +32,6 @@ class CategoryController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('admin.showCategories')->with('success', 'دسته‌بندی با موفقیت اضافه شد.');
+        return redirect()->route('categories.create')->with('success', 'دسته‌بندی با موفقیت اضافه شد.');
     }
 }

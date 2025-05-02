@@ -1964,7 +1964,7 @@ body::before {
 
 .content-card {
     animation: fadeIn 0.6s ease forwards;
-}
+}    padding-top: 15px;
 
 /* Responsive */
 @media (max-width: 576px) {
@@ -1997,3 +1997,10 @@ body::before {
         font-size: 0.8rem;
     }
 }
+
+#btnSubToAddProduct{
+    margin-top: 15px;
+    background-color: green;
+}
+
+

@@ -46,7 +46,6 @@
 
             </ul>
 
-            <p class="menu-heading">مدیریت فروشگاه</p>
             <ul class="nav flex-column">
                 <li class="nav-item">
                     <a href="/admin/categories" class="nav-link active" data-section="categories">
@@ -56,22 +55,6 @@
                 </li>
             </ul>
 
-            <p class="menu-heading">تنظیمات</p>
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a href="/admin/shopInfo" class="nav-link" data-section="store-info">
-                        <i class="bi bi-shop"></i>
-                        اطلاعات فروشگاه
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="/admin/settings" class="nav-link" data-section="system-settings">
-                        <i class="bi bi-gear-fill"></i>
-                        تنظیمات سیستم
-                    </a>
-                </li>
-            </ul>
         </div>
     </aside>
 

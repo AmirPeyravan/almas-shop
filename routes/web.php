@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Customers;
 use App\Http\Controllers\Admin\Order;
-use App\Http\Controllers\Admin\Product;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\Setting;
 use App\Http\Controllers\Admin\UserManagement;
 use App\Http\Controllers\Admin\CategoryController;
@@ -72,7 +72,12 @@ Route::prefix('admin')
 
         Route::get('/customers', [Customers::class, 'showCustomers']);
         Route::get('/orders', [Order::class, 'showOrders']);
-        Route::get('/products', [Product::class, 'showProducts']);
+        Route::get('/products', [ProductController::class, 'showProducts']);
+
+
+        Route::get('/products/add', [ProductController::class, 'showAddProducts']);
+        Route::post('/products', [ProductController::class, 'createProduct'])->name('products.add');
+
         Route::get('/shopInfo', [AdminController::class, 'showShopInfo']);
         Route::get('/settings', [Setting::class, 'showSettings']);
         Route::get('/users', [UserManagement::class, 'showUsers']);
