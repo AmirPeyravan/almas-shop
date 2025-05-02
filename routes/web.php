@@ -64,7 +64,7 @@ Route::prefix('admin')
     ->middleware(['auth',adminCheck::class])
     ->group(function () {
         Route::get('/', [AdminController::class, 'showAdminPanel']);
-        Route::get('/categories', [CategoryController::class, 'showCategories']);
+        Route::get('/categories', [CategoryController::class, 'showCategories'])->name('showCategories');
         Route::get('/categories/add', [CategoryController::class, 'addCategory']);
 
         Route::post('/categories', [CategoryController::class, 'createCategory'])
