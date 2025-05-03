@@ -58,6 +58,10 @@ Route::prefix('/')
         Route::post('/profile/upload-image', [\App\Http\Controllers\ProfileController::class, 'uploadImage'])
             ->name('profile.uploadImage')
             ->middleware('auth');
+
+        Route::get('products/1', function () {
+            return view('frontend.showProducts');
+        });
 });
 
 Route::prefix('admin')

@@ -12,9 +12,11 @@
                             <img src="{{ asset('storage/' . $product->thumbnail) }}" class="product-image" alt="گوشی موبایل">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">{{@$product->productName}}</h5>
+                           <a href="/products/{{$product->id}}">
+                               <h5 class="card-title">{{$product->productName}}</h5>
+                           </a>
                             <div class="price-wrapper">
-                                <span class="current-price">{{@$product->price}}</span>
+                                <span class="current-price">{{$product->formatted_price}}</span>
                             </div>
                             <button class="add-to-cart">
                                 افزودن به سبد خرید

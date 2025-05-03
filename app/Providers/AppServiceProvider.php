@@ -22,11 +22,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+//        View::composer(['frontend.*', 'admin.*'], function ($view) {
+//            $view->with([
+//                'categories' => Category::all(),
+//                'products' => Product::all(),
+//            ]);
+//        });
+
+
+// ارسال ۸ محصول اخیر به ویوهای frontend.* و admin.*
         View::composer(['frontend.*', 'admin.*'], function ($view) {
-            $view->with([
-                'categories' => Category::all(),
-                'products' => Product::all(),
-            ]);
+            $products = Product::orderBy('created_at', 'desc')->take(8)->get();
+            $view->with('products', $products);
         });
+
+        // ارسال دسته‌بندی‌ها به ویوهای frontend.*
+        View::composer(['frontend.*', 'admin.*'], function ($view) {
+            $view->with('categories', Category::all());
+        });
+
     }
 }
