@@ -267,13 +267,13 @@
     </div>
     <div class="content-card-body">
         <div class="product-image">
-            <img src="https://via.placeholder.com/300" alt="گوشی هوشمند">
+            <img src="{{ asset('storage/' . $product->thumbnail) }}" alt="{{$product->productName}}">
         </div>
         <div class="product-details">
-            <h2>گوشی هوشمند</h2>
-            <p>گوشی با صفحه نمایش 6.5 اینچ و دوربین 48 مگاپیکسل، مجهز به پردازنده قدرتمند و باتری 4000 میلی‌آمپر ساعتی. مناسب برای بازی و عکاسی حرفه‌ای.</p>
-            <span class="category">الکترونیک</span>
-            <span class="stock stock-available">موجودی: 50 عدد</span>
+            <h2>{{$product->productName}}</h2>
+            <p>{{$product->description}}</p>
+            <span class="category">دسته بندی : {{$product->category_id}}</span>
+            <span style="background-color:darkgray;color: black" class="stock stock-available">موجودی({{$product->stock_quantity}})</span>
             <button class="btn btn-add-to-cart"><i class="fa-solid fa-cart-plus"></i> افزودن به سبد خرید</button>
         </div>
     </div>

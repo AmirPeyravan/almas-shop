@@ -81,14 +81,8 @@
                 <div class="divider">یا ورود با</div>
 
                 <div class="social-login">
-                    <a href="#" class="social-btn google">
+                    <a href="{{ url('/auth/google') }}" class="social-btn google">
                         <i class="bi bi-google"></i>
-                    </a>
-                    <a href="#" class="social-btn facebook">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <a href="#" class="social-btn twitter">
-                        <i class="bi bi-twitter-x"></i>
                     </a>
                 </div>
 

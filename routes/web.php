@@ -11,9 +11,14 @@ use App\Http\Controllers\Admin\Setting;
 use App\Http\Controllers\Admin\UserManagement;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\homeProductController;
 use App\Models\Admin\Category;
 use App\Http\Middleware\adminCheck;
 use App\Http\Middleware\CheckActive;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Http\Controllers\SocialAuthController;
 
 
 Route::prefix('/')
@@ -59,9 +64,7 @@ Route::prefix('/')
             ->name('profile.uploadImage')
             ->middleware('auth');
 
-        Route::get('products/1', function () {
-            return view('frontend.showProducts');
-        });
+        Route::get('/products/{id}', [homeProductController::class, 'singleProduct']);
 });
 
 Route::prefix('admin')
@@ -76,11 +79,11 @@ Route::prefix('admin')
 
         Route::get('/customers', [Customers::class, 'showCustomers']);
         Route::get('/orders', [Order::class, 'showOrders']);
-        Route::get('/products', [ProductController::class, 'showProducts']);
+        Route::get('/products', [homeProductController::class, 'showProducts']);
 
 
-        Route::get('/products/add', [ProductController::class, 'showAddProducts']);
-        Route::post('/products', [ProductController::class, 'createProduct'])->name('products.add');
+        Route::get('/products/add', [homeProductController::class, 'showAddProducts']);
+        Route::post('/products', [homeProductController::class, 'createProduct'])->name('products.add');
 
         Route::get('/shopInfo', [AdminController::class, 'showShopInfo']);
         Route::get('/settings', [Setting::class, 'showSettings']);
@@ -88,3 +91,8 @@ Route::prefix('admin')
 
         Route::post('/ban-user', [UserManagement::class, 'banUser'])->name('ban.user');
     });
+
+
+
+    Route::get('/auth/google', [SocialAuthController::class, 'redirectToGoogle']);
+    Route::get('/auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
