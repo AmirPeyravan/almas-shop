@@ -79,11 +79,11 @@ Route::prefix('admin')
 
         Route::get('/customers', [Customers::class, 'showCustomers']);
         Route::get('/orders', [Order::class, 'showOrders']);
-        Route::get('/products', [homeProductController::class, 'showProducts']);
+        Route::get('/products', [ProductController::class, 'showProducts']);
 
 
-        Route::get('/products/add', [homeProductController::class, 'showAddProducts']);
-        Route::post('/products', [homeProductController::class, 'createProduct'])->name('products.add');
+        Route::get('/products/add', [ProductController::class, 'showAddProducts']);
+        Route::post('/products', [ProductController::class, 'createProduct'])->name('products.add');
 
         Route::get('/shopInfo', [AdminController::class, 'showShopInfo']);
         Route::get('/settings', [Setting::class, 'showSettings']);

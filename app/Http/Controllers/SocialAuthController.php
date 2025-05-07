@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
 
@@ -14,11 +16,24 @@ class SocialAuthController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    // دریافت اطلاعات بعد از لاگین موفق
     public function handleGoogleCallback()
     {
-        $googleUser = Socialite::driver('google')->user();
-
+        // دریافت اطلاعات کاربر از گوگل
+        $googleUser = Socialite::driver('google')->stateless()->user();
+    
+        // لینک آواتار
+        $avatarUrl = $googleUser->getAvatar();
+    
+        // دریافت محتویات تصویر
+        $avatarContents = file_get_contents($avatarUrl);
+    
+        // نام فایل آواتار (می‌تونی تغییرش بدی)
+        $avatarName = 'avatars/' . $googleUser->getId() . '.jpg';
+    
+        // ذخیره آواتار در پوشه 'avatars'
+        Storage::disk('public')->put($avatarName, $avatarContents);
+    
+        // ذخیره یا بروزرسانی اطلاعات کاربر
         $user = User::updateOrCreate(
             ['email' => $googleUser->getEmail()],
             [
@@ -28,13 +43,16 @@ class SocialAuthController extends Controller
                 'email' => $googleUser->getEmail(),
                 'password' => bcrypt(Str::random(16)),
                 'google_id' => $googleUser->getId(),
-                'avatar' => $googleUser->getAvatar(),
+                'avatar' => $avatarName,
                 'role_id' => 2
-            ]
+           ]
         );
-
-        auth()->login($user);
-
-        return redirect('/profile'); // مسیر دلخواه بعد از لاگین
+    
+        // ورود کاربر
+        Auth::login($user);
+    
+        // هدایت به داشبورد
+        return redirect('/profile');
     }
+    
 }
