@@ -26,9 +26,12 @@
                 </li>
             </ul>
             <div class="d-flex align-items-center">
+
                 <div id="search-box" class="search-form position-relative me-3">
-                    <input type="text" id="search-box" class="form-control" placeholder="">
-                    <i class="bi bi-search search-icon"></i>
+                    <form action="{{ route('frontend.search') }}" method="GET">
+                        <input type="text" name="query" id="search-box" class="form-control" placeholder="">
+                        <i class="bi bi-search search-icon"></i>
+                    </form>
                 </div>
 
                 <a href="/cart">

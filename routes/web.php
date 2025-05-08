@@ -65,7 +65,10 @@ Route::prefix('/')
             ->middleware('auth');
 
         Route::get('/products/{id}', [homeProductController::class, 'singleProduct']);
-});
+
+        Route::get('/search', [homeProductController::class, 'search'])
+            ->name('frontend.search');
+    });
 
 Route::prefix('admin')
     ->middleware(['auth',adminCheck::class])
@@ -91,8 +94,6 @@ Route::prefix('admin')
 
         Route::post('/ban-user', [UserManagement::class, 'banUser'])->name('ban.user');
     });
-
-
 
     Route::get('/auth/google', [SocialAuthController::class, 'redirectToGoogle']);
     Route::get('/auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);

@@ -17,4 +17,15 @@ class homeProductController extends Controller
         $product = Product::findOrFail($id);
         return view('frontend.showProducts', compact('product'));
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $myProducts = Product::where('productName', 'LIKE', "%{$query}%")
+            ->orWhere('description', 'LIKE', "%{$query}%")
+            ->get();
+
+        return view('frontend.search', compact('myProducts', 'query'));
+    }
 }
