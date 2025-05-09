@@ -19,6 +19,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Controllers\SocialAuthController;
+use App\Http\Controllers\NewsletterController;
 
 
 Route::prefix('/')
@@ -97,3 +98,6 @@ Route::prefix('admin')
 
     Route::get('/auth/google', [SocialAuthController::class, 'redirectToGoogle']);
     Route::get('/auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
+
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+

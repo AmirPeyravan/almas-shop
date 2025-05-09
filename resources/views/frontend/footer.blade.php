@@ -10,28 +10,25 @@
                 <div class="footer-social">
                     <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
                     <a href="#" class="social-link"><i class="bi bi-telegram"></i></a>
-                    <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
                     <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6">
                 <h4 class="footer-title">دسترسی سریع</h4>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>صفحه اصلی</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>محصولات</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>درباره ما</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>تماس با ما</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>سوالات متداول</a></li>
+                    <li><a href="/"><i class="bi bi-chevron-left"></i>صفحه اصلی</a></li>
+                    <li><a href="/search"><i class="bi bi-chevron-left"></i>محصولات</a></li>
+                    <li><a href="/about"><i class="bi bi-chevron-left"></i>درباره ما</a></li>
+                    <li><a href="/contact"><i class="bi bi-chevron-left"></i>تماس با ما</a></li>
+                    <li><a href="/categories"><i class="bi bi-chevron-left"></i>دسته بندی</a></li>
                 </ul>
             </div>
             <div class="col-lg-2 col-md-6">
                 <h4 class="footer-title">دسته‌بندی‌ها</h4>
                 <ul class="footer-links">
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>موبایل</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>لپ تاپ</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>ساعت هوشمند</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>هدفون</a></li>
-                    <li><a href="#"><i class="bi bi-chevron-left"></i>لوازم جانبی</a></li>
+                    @foreach($categories as $category)
+                        <li><a href="#"><i class="bi bi-chevron-left"></i>{{$category->name}}</a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="col-lg-4 col-md-6">

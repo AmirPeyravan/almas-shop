@@ -37,9 +37,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
         // ارسال دسته‌بندی‌ها به ویوهای frontend.*
-       // View::composer(['frontend.*', 'admin.*'], function ($view) {
-         //   $view->with('categories', Category::all());
-        //});
+        View::composer(['frontend.*', 'admin.*'], function ($view) {
+            $view->with('categories', Category::all());
+        });
 
     }
 }
