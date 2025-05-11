@@ -1,15 +1,3 @@
-{{--<h2>نتایج برای: "{{ $query }}"</h2>--}}
-
-{{--@if ($products->count())--}}
-{{--    <ul>--}}
-{{--        @foreach ($products as $product)--}}
-{{--            <li>{{ $product->productName }} - {{ $product->price }} تومان</li>--}}
-{{--        @endforeach--}}
-{{--    </ul>--}}
-{{--@else--}}
-{{--    <p>هیچ محصولی یافت نشد.</p>--}}
-{{--@endif--}}
-
     <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -29,20 +17,20 @@
 <section class="products-section">
     <div class="container">
         <h2 class="section-title animate">محصولات</h2>
-        <div class="row">
-            @if($myProducts->count())
-                @foreach ($myProducts as $product)
+             <div class="row">
+            @if($showProducts->count())
+                @foreach ($showProducts as $product)
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
                         <div class="product-card animate delay-1">
                             <div class="product-image-wrapper">
-                                <img src="{{ asset('storage/' . $product->thumbnail) }}" class="product-image" alt="{{ $product->productName }}">
+                                <img src="{{ asset('storage/' . $product['thumbnail']) }}" class="product-image" alt="{{ $product['productName'] }}">
                             </div>
                             <div class="card-body">
-                                <a href="/products/{{ $product->id }}">
-                                    <h5 class="card-title">{{ $product->productName }}</h5>
+                                <a href="/products/{{ $product['id'] }}">
+                                    <h5 class="card-title">{{ $product['productName'] }}</h5>
                                 </a>
                                 <div class="price-wrapper">
-                                    <span class="current-price">{{ $product->formatted_price }}</span>
+                                    <span class="current-price">{{ $product['price'] }}</span>
                                 </div>
                                 <button class="add-to-cart">
                                     افزودن به سبد خرید
@@ -58,6 +46,9 @@
         </div>
     </div>
 </section>
+
+
+
 
 @include("frontend.footer")
 

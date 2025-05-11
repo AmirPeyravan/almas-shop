@@ -67,8 +67,12 @@ Route::prefix('/')
 
         Route::get('/products/{id}', [homeProductController::class, 'singleProduct']);
 
+//        Route::get('/search', [homeProductController::class, 'search'])
+//            ->name('frontend.search');
+
         Route::get('/search', [homeProductController::class, 'search'])
-            ->name('frontend.search');
+        ->name('frontend.search');
+
     });
 
 Route::prefix('admin')

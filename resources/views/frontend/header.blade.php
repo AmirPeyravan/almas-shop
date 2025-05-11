@@ -29,7 +29,7 @@
 
                 <div id="search-box" class="search-form position-relative me-3">
                     <form action="{{ route('frontend.search') }}" method="GET">
-                        <input type="text" name="query" id="search-box" class="form-control" placeholder="">
+                        <input type="text" name="q" id="search-box" class="form-control" placeholder="">
                         <i class="bi bi-search search-icon"></i>
                     </form>
                 </div>

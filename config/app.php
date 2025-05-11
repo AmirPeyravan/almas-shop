@@ -1,10 +1,18 @@
 <?php
 
+use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use App\Providers\AppServiceProvider;
+use Laravel\Scout\ScoutServiceProvider;
+use Elastic\ScoutDriver\ServiceProvider; // به جای ScoutDriverServiceProvider
 
 return [
-
-    App\Providers\AppServiceProvider::class,
+    // سایر تنظیمات
+    'providers' => BaseServiceProvider::defaultProviders()->merge([
+        AppServiceProvider::class,
+        ScoutServiceProvider::class,
+        ServiceProvider::class, // کلاس درست
+    ])->toArray(),
+    // سایر تنظیمات
 
     /*
     |--------------------------------------------------------------------------
