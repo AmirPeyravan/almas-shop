@@ -253,9 +253,9 @@
     <h1 class="page-title">نمایش محصول</h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">خانه</a></li>
-            <li class="breadcrumb-item"><a href="#">محصولات</a></li>
-            <li class="breadcrumb-item active" aria-current="page">گوشی هوشمند</li>
+            <li class="breadcrumb-item active">خانه</li>
+            <li class="breadcrumb-item active">محصولات</li>
+            <li class="breadcrumb-item active" aria-current="page">{{$product->productName}}</li>
         </ol>
     </nav>
 </div>
