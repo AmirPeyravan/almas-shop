@@ -107,6 +107,4 @@ Route::prefix('admin')
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
-Route::get('/check-ip', function () {
-    return response()->json(geoip('5.114.200.1')->toArray());
-});
+
